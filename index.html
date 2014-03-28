@@ -129,7 +129,9 @@
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script>
 		    $().ready(function() {
-		        var releases = $.ajax('https://www.github.com/Dolu1990/ElectricalAge/releases/latest').done(function(msg){
+		        $.ajax('https://www.github.com/Dolu1990/ElectricalAge/releases/latest', {
+		            crossDomain: true
+		        }).done(function(msg){
 		            var startString = '<span class="css-truncate-target">';
 		            var endString = '</span>';
 		            start = msg.indexOf(startString) + startString.length;
