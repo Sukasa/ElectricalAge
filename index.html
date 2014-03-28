@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<meta name="description" content="ElectricalAge - Minecraft Mod (ELN)">
-    	<meta name="author" content="Dolu1990">			
+    	<meta name="author" content="Dolu1990">
 
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<style type="text/css">
@@ -76,8 +76,8 @@
   							<h2 style="margin:0;padding:0;"><small>Minecraft Mod - Codename : ELN</small></h2>
   						</div>
   						<div class="span4" style="text-align:right;">
-  							<a href="https://github.com/Dolu1990/ElectricalAge/releases" class="btn btn-primary" style="margin-top: 25px;" title="Last release">
-  								Download last release<br><i class="icon-tag icon-white"></i> <small>BETA-1.1.1</small>
+  							<a href="https://github.com/Dolu1990/ElectricalAge/releases/latest" class="btn btn-primary" style="margin-top: 25px;" title="Last release">
+  								Download last release<br><i class="icon-tag icon-white"></i> <small id="latest"></small>
   							</a>
   						</div>
 					</div>
@@ -125,12 +125,27 @@
 				</p>
 			</div>
 		</div>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+		    $().ready(function() {
+		        var releases = $.ajax('https://www.github.com/Dolu1990/ElectricalAge/releases/latest').done(function(msg){
+		            var startString = '<span class="css-truncate-target">';
+		            var endString = '</span>';
+		            start = msg.indexOf(startString) + startString.length;
+		            end = msg.indexOf(endString, start);
+		            $('#latest').text(msg.substring(start, end));
+		            console.log(msg.substring(start, end));
+		        });
+		    });
+		</script>
+
 		<script src="js/bootstrap.min.js"></script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
 		
 		  ga('create', 'UA-49110359-1', 'dolu1990.github.io');
 		  ga('send', 'pageview');
